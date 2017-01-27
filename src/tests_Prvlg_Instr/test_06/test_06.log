@@ -1,0 +1,16 @@
+test_lgdt    :  OK
+test_lldt    :  OK
+test_ltr     :  OK
+test_lidt    :  OK
+test_mov_cr3 :  OK
+test_lmsw    :  OK
+test_clts    :  OK
+test_mov_drx :  OK
+test_invd    :  OK
+test_wbinvd  :  OK
+test_invlpg  :  OK
+test_hlt     :  OK
+test_rdmsr   :  OK
+test_wrmsr   :  OK
+test_rdpmc   :  OK
+test_rdtsc   :  OK

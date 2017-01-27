@@ -1,0 +1,6 @@
+test name : test_06
+
+Content : launch all privileged instructions in ring 3. Must always cause a #GP.
++ GP local to handle the #GP and execute the next test.
+
+Result : OK for all tests (with Vmware and with Ramooflax) - cf. log

@@ -1,0 +1,38 @@
+#include <core/test.h>
+#include <core/init.h>
+#include <core/segmentation.h>
+#include <core/interrupts.h>
+#include <core/page.h>
+#include <core/print.h>
+#include <core/start.h>
+
+// Global and external variables
+
+static int init_test_x() {
+	// Save
+	// Init
+	return 0;
+}
+
+
+static int test_test_x() {
+	// Test
+	return 0;
+}
+
+static int restore_test_x() {
+	// Restore
+	return 0;
+}
+
+test_t test_x = {
+	.name = " ",
+	.desc = " ",
+	.init = init_test_x,
+	.test = test_test_x,
+	.fini = restore_test_x,
+};
+
+DECLARE_TEST(test_x)
+
+
