@@ -4,6 +4,8 @@ CrashOS is a tool dedicated to the research of vulnerabilities in hypervisors by
 CrashOS is a minimalist Operating System which aims to lead to hypervisor crashs, hence its name. 
 You can launch existing tests or implement your owns and observe hypervisor behaviour towards this unusual kernel.
 
+![](https://github.com/airbus-seclab/crashos/blob/master/docs/crashos.gif)
+
 The core of CrashOS provides the following OS features: 
 - the Boot entry;
 - the memory management (segmentation and paging);
