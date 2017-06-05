@@ -66,3 +66,6 @@ Specify, in the main [Makefile](https://github.com/airbus-seclab/crashos/blob/ma
 
 Then, compile the project.
     `.../crashos$ make install`
+
+# License
+CrashOS is released under [GPLv2](https://github.com/airbus-seclab/crashos/LICENSE.md).

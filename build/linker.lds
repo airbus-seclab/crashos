@@ -1,3 +1,5 @@
+/* This file is part of CrashOS and is released under GPLv2 (see crashos/LICENSE.md) */
+/* Copyright Airbus Group */
 OUTPUT_FORMAT("elf32-i386","elf32-i386","elf32-i386");
 OUTPUT_ARCH("i386")
 

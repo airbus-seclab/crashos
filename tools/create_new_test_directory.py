@@ -1,3 +1,6 @@
+# This file is part of CrashOS and is released under GPLv2 (see crashos/LICENSE.md)
+# Copyright Airbus Group
+
 # Python script to create a directory for the new test "test_name" containing :		#
 # - test_name.c   : an empty source file following the template of crashos test		#
 # - test_name.txt : an empty file to describe the test								#

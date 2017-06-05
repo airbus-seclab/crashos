@@ -1,3 +1,5 @@
+// This file is part of CrashOS and is released under GPLv2 (see crashos/LICENSE.md)
+// Copyright Airbus Group
 #include <core/print.h>
 #include <core/video.h>
 #include <core/serial_driver.h>

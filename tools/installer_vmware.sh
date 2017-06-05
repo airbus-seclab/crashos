@@ -1,4 +1,6 @@
 #!/bin/bash
+# This file is part of CrashOS and is released under GPLv2 (see crashos/LICENSE.md)
+# Copyright Airbus Group
 
 VMNAME="crashos"
 VMPATH="/home/anais/Vmware/${VMNAME}"

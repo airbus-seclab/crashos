@@ -1,3 +1,5 @@
+// This file is part of CrashOS and is released under GPLv2 (see crashos/LICENSE.md)
+// Copyright Airbus Group
 #include <core/string.h>
 
 void* memset(void *dst, int c, size_t size)

@@ -1,3 +1,5 @@
+// This file is part of CrashOS and is released under GPLv2 (see crashos/LICENSE.md)
+// Copyright Airbus Group
 #ifndef __SEGMEM_H__
 #define __SEGMEM_H__
 

@@ -1,3 +1,5 @@
+// This file is part of CrashOS and is released under GPLv2 (see crashos/LICENSE.md)
+// Copyright Airbus Group
 /*
  * simple_handler.s : simple .s to implement a first handler (PF_Handler)
  * Not used in the future
