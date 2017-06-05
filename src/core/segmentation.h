@@ -9,6 +9,8 @@
 #define K_PVL 0
 #define U_PVL 3
 
+#define farjump(_fptr) ({asm volatile ("ljmp  *%0"::"m"(_fptr):"memory")})
+
 typedef union segment_selector
 {
    struct
@@ -191,7 +193,7 @@ typedef struct task_state_segment
 #define get_gdt_sel(index,pvl)       get_selector(index,GDT_TYPE,pvl)
 #define get_ldt_sel(index,pvl)       get_selector(index,LDT_TYPE,pvl)
 
-#define get_kgdt_sel(index)          get_gdt_sel(index,K_PVL)
+  #define get_kgdt_sel(index)          get_gdt_sel(index,K_PVL)
 #define get_ugdt_sel(index)          get_gdt_sel(index,U_PVL)
 
 /**
@@ -213,6 +215,29 @@ typedef struct task_state_segment
  */
 #define set_code_desc(entry,pvl)                                           \
 ({      (entry).type = 11;              /* Exe/A, non-conforming */        \
+        (entry).dpl = pvl;              /* privilege level */              \
+        (entry).db = 1;                 /* 32 bits addresses */            \
+        (entry).s = 1;                  /* non system descriptor */        \
+        (entry).p = 1;                  /* segment is present in mem */    \
+        (entry).reserved = 0;                                              \
+        (entry).gran = 1;               /* limit unit is 4KB */            \
+        (entry).base_1 = 0;             /* CODE goes from 0 to 4GB */      \
+        (entry).base_2 = 0;                                                \
+        (entry).base_3 = 0;                                                \
+        (entry).limit_1 = 0xFFFF;       /* 2^20*gran = 4GB */              \
+        (entry).limit_2 = 0xF;                                             \
+})
+
+/**
+ * Prepare code descriptor in "entry" with privilege "pvl"
+ *
+ * conforming
+ * 32 bits addressing
+ * non system
+ * 4GB
+ */
+#define set_code_desc_conforming(entry,pvl)                                \
+({      (entry).type = 12;              /* 32-bit call gate */             \
         (entry).dpl = pvl;              /* privilege level */              \
         (entry).db = 1;                 /* 32 bits addresses */            \
         (entry).s = 1;                  /* non system descriptor */        \
@@ -307,6 +332,21 @@ typedef struct task_state_segment
         (entry).base_2 = (((uint32_t)(addr))>>16)&0xFF;   /* 8 middle bits of 32 bits linear addr */    \
         (entry).base_3 = (((uint32_t)(addr))>>24)&0xFF;   /* 8 high bits of 32 bits linear addr */      \
         (entry).dpl = 0;                                  /* kernel only does task switch */            \
+        (entry).type = 9;                                 /* not busy */                                \
+        (entry).s = 0;                                    /* system descriptor */                       \
+        (entry).limit_1 = sizeof(task_state_segment_t);   /* TSS size */                                \
+        (entry).limit_2 = 0;                                                                            \
+})
+
+#define set_tss_desc_r3(entry,addr)                                                                     \
+({      (entry).db = 0;                                                                                 \
+        (entry).p = 1;                                                                                  \
+        (entry).reserved = 0;                                                                           \
+        (entry).gran = 0;                                 /* 1 byte increment for limit */              \
+        (entry).base_1 = ((uint32_t)(addr))&0xFFFF;       /* 16 low bits of 32 bits linear addr */      \
+        (entry).base_2 = (((uint32_t)(addr))>>16)&0xFF;   /* 8 middle bits of 32 bits linear addr */    \
+        (entry).base_3 = (((uint32_t)(addr))>>24)&0xFF;   /* 8 high bits of 32 bits linear addr */      \
+        (entry).dpl = 3;                                  /* kernel only does task switch */            \
         (entry).type = 9;                                 /* not busy */                                \
         (entry).s = 0;                                    /* system descriptor */                       \
         (entry).limit_1 = sizeof(task_state_segment_t);   /* TSS size */                                \

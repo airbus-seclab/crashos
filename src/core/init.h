@@ -57,6 +57,7 @@ void init_work_mem();
  * 											|    ...     |      |       ...       |\n
  * 											|____________|		|_________________|\n
  * 											*/
+//int init_segmentation(segment_descriptor_t gdt[6], uint32_t nr_entry, task_state_segment_t *tss, uint32_t *stack_ptr, gdt_reg_t *gdtr);
 int init_segmentation(segment_descriptor_t gdt[6], task_state_segment_t *tss, uint32_t *stack_ptr, gdt_reg_t *gdtr);
 
 /**

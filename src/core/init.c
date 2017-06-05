@@ -30,11 +30,48 @@ void init_work_mem() {
 
 }
 
-int init_segmentation(segment_descriptor_t gdt[6], task_state_segment_t *tss, uint32_t *stack_ptr, gdt_reg_t *gdtr) {
+// int init_segmentation(segment_descriptor_t *gdt, uint32_t nr_entry, task_state_segment_t *tss, uint32_t *stack_ptr, gdt_reg_t *gdtr) {
+// 	if (gdt ==  NULL || tss == NULL || stack_ptr == NULL || gdtr == NULL) {
+// 		printf("Init segmentation : Null parameter.\n");
+// 		return 1;
+// 	}
+
+// 	if (nr_entry < 6) {
+// 		printf("gdt too small\n");
+// 		return 1;
+// 	}
+
+// 	// Fill GDT
+// 	set_null_desc( gdt[0] );
+// 	set_code_desc( gdt[1], 0 );
+// 	set_data_desc( gdt[2], 0 );
+// 	set_code_desc( gdt[3], 3 );
+// 	set_data_desc( gdt[4], 3 );
+// 	set_tss_desc( gdt[5], (uint32_t)tss );
+
+// 	// Set TSS
+// 	tss->esp0 = (uint32_t)stack_ptr;
+// 	tss->ss0 = get_kgdt_sel(2);
+
+// 	// Update GDTR
+// 	gdtr->base_addr = (uint32_t)gdt;
+// 	gdtr->limit = nr_entry*sizeof(segment_descriptor_t)-1;
+// 	set_gdtr( *gdtr );
+
+// 	// Set selectors
+// 	set_tr( get_kgdt_sel(5) ); 	 // tss in task register
+// 	set_cs_i( get_kgdt_sel(1) ); // code ring 0
+// 	set_ds( get_ugdt_sel(4) );   // data ring 3
+// 	set_ss( get_kgdt_sel(2) );	 // data ring 0
+
+// 	return 0;
+// }
+int init_segmentation(segment_descriptor_t *gdt, task_state_segment_t *tss, uint32_t *stack_ptr, gdt_reg_t *gdtr) {
 	if (gdt ==  NULL || tss == NULL || stack_ptr == NULL || gdtr == NULL) {
 		printf("Init segmentation : Null parameter.\n");
 		return 1;
 	}
+
 
 	// Fill GDT
 	set_null_desc( gdt[0] );
@@ -50,7 +87,7 @@ int init_segmentation(segment_descriptor_t gdt[6], task_state_segment_t *tss, ui
 
 	// Update GDTR
 	gdtr->base_addr = (uint32_t)gdt;
-	gdtr->limit = 6*sizeof(segment_descriptor_t)-1;
+	gdtr->limit = 10*sizeof(segment_descriptor_t)-1;
 	set_gdtr( *gdtr );
 
 	// Set selectors
@@ -61,6 +98,7 @@ int init_segmentation(segment_descriptor_t gdt[6], task_state_segment_t *tss, ui
 
 	return 0;
 }
+
 
 int init_paging(pgd_struct *pGd, ptb_struct *pTb, uint32_t __cr4) {
 	if (pGd == NULL) {
@@ -76,21 +114,11 @@ int init_paging(pgd_struct *pGd, ptb_struct *pTb, uint32_t __cr4) {
 	pTb->next_free_pte = 0;
 
 	// Update CR4 and CR3
-	__cr4 = CR4_PSE; // CR4_PageSizeExtension = 1000
-	set_cr4(__cr4);
+	set_cr4( __cr4|CR4_PSE ); // CR4_PageSizeExtension = 1000
 	set_cr3( &(pGd->pgd[0]) );
 
 	// Enable paging
 	enable_paging();
-
-	// Setup PGE after paging is enabled (cf Intel V3 - CR)
-	get_cr4(__cr4);
-	set_cr4(__cr4|CR4_PGE);
-
-	get_cr4(__cr4);
-	if(__cr4 & CR4_PGE)
-		printf_log("CR4 enabled Global Pages\n");
-
 	return 0;
 }
 

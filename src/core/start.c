@@ -72,5 +72,7 @@ void tests()
 			printf("ok.\n");
 		}
 		cursor.u32++;
+
+		
 	}
 }

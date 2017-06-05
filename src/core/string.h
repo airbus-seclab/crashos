@@ -10,6 +10,7 @@
  * @param size the size of the buffer to fill
  */
 void* memset(void *dst, int c, size_t size);
+
 /**
  * Copy one buffer in an other
  * @param dst0 the address of the destination buffer
@@ -17,4 +18,13 @@ void* memset(void *dst, int c, size_t size);
  * @param size the size of the source buffer
  */
 void* memcpy(void *dst0, const void *src0, unsigned int size);
+
+/**
+ * Match two strings
+ * @param s1 first string address
+ * @param s2 second string address
+ * @param size the string size to compare
+ */
+int strcmp(void *str1, void *str2, unsigned int size);
+
 #endif

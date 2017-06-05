@@ -24,3 +24,11 @@ void* memcpy(void *dst0, const void *src0, unsigned int size)
     *dst = *src;
   return dst0;
 }
+
+int strcmp(void *s1, void *s2, unsigned int sz)
+{
+   unsigned int i;
+   for(i=0 ; i<sz && ((char*)s1)[i] == ((char*)s2)[i] ; i++);
+   return (i<sz)?0:1;
+}
+

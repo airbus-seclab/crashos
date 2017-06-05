@@ -43,7 +43,7 @@ size_t sprintf(char *format, va_list params)
    char     buf[1024];
 
    retval = vsnprintf( buf, sizeof(buf), format, params );
-   serial_write( buf, PORT_COM2);
+   serial_write( buf, PORT_COM1);
    return retval;
 }
 

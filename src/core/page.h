@@ -65,7 +65,6 @@
 
 #define PAGE_SIZE      4096
 #define PAGE_BITSHIFT  12
-#define PAGE_4M_SHIFT  22
 
 #define PTB_SIZE       4194304
 #define PTB_BITSHIFT   22
@@ -95,7 +94,6 @@
 #define page_index(addr)             ((addr)&0x00000fff)
 #define page_index_4MB(addr)         ((addr)&0x003fffff)
 #define page_number(addr)            ((addr)>>PAGE_BITSHIFT)
-#define page_4M_number(addr)         ((addr)>>PAGE_4M_SHIFT)
 
 #define page_align_inf(addr)         __align_inf(addr,PAGE_SIZE)
 #define page_align_sup(addr)         __align_sup(addr,PAGE_SIZE)
@@ -249,7 +247,6 @@ typedef union page_table_entry
 #define PG_PWT         (1<<PG_PWT_BIT)
 #define PG_GLOBAL      (1<<PG_G_BIT)
 #define PG_4MB         (1<<PG_PS_BIT)
-#define PG_G           (1<<PG_G_BIT)
 
 //pfn = Page Frame Number
 #define __pg_set_entry(_e_,_attr_,_pfn_)		\
@@ -284,7 +281,6 @@ typedef union page_table_entry
 	"mov %%eax, %%cr0":::"eax" )
 
 #define CR4_PSE             (1<<4)
-#define CR4_PGE             (1<<7)
 #define get_cr4(val)  asm volatile ( "mov %%cr4, %%eax":"=a"(val) )
 #define set_cr4(val)  asm volatile ( "mov %%eax, %%cr4"::"a"(val) )
 
