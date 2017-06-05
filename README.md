@@ -68,4 +68,4 @@ Then, compile the project.
     `.../crashos$ make install`
 
 # License
-CrashOS is released under [GPLv2](https://github.com/airbus-seclab/crashos/LICENSE.md).
+CrashOS is released under [GPLv2](https://github.com/airbus-seclab/crashos/blob/master/LICENSE.md).
