@@ -1,1 +1,3 @@
+# This file is part of CrashOS and is released under GPLv2 (see crashos/LICENSE.md)
+# Copyright Airbus Group
 obj := test_08.o

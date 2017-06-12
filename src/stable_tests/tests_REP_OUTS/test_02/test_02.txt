@@ -1,3 +1,5 @@
+// This file is part of CrashOS and is released under GPLv2 (see crashos/LICENSE.md)
+// Copyright Airbus Group
 Test Name : test_2
 
 Aim : Test behaviour of hypervisor when "REP OUTS COM3" instruction is using a DS_r3 mapped on non consecutive physical pages 

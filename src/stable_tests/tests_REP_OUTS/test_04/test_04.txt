@@ -1,3 +1,5 @@
+// This file is part of CrashOS and is released under GPLv2 (see crashos/LICENSE.md)
+// Copyright Airbus Group
 Test name : test_04
 Aim : test a reading (REP OUTS) of an expand-down data segment with a base address and a limit critically configured 
 ("effective limit" > 0xffff = upper-bound)

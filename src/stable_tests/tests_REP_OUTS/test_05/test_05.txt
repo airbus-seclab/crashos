@@ -1,3 +1,5 @@
+// This file is part of CrashOS and is released under GPLv2 (see crashos/LICENSE.md)
+// Copyright Airbus Group
 Test name : test_05
 Aim : test a writing more than 0x82 (=130) bytes into serial port COM1
 

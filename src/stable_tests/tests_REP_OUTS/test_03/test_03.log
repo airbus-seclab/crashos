@@ -1,3 +1,5 @@
+// This file is part of CrashOS and is released under GPLv2 (see crashos/LICENSE.md)
+// Copyright Airbus Group
 0x305a:30:0x2019dd:32:uart out
 0x305a:30:0x2019dd:32:vm_access_local read dst 0x1feef4bd src 0xff0 ln 64 [0x0:0x0]
 0000000000000000000000000000000000000000000000000000000000000000

@@ -1,3 +1,5 @@
+// This file is part of CrashOS and is released under GPLv2 (see crashos/LICENSE.md)
+// Copyright Airbus Group
 Test Name : test_3
 
 Aim : Test behaviour of hypervisor when "REP OUTS COM1" instruction is using a DS mapped on non consecutive physical pages (with 0x67 prefix).

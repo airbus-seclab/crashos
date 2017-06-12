@@ -1,3 +1,5 @@
+// This file is part of CrashOS and is released under GPLv2 (see crashos/LICENSE.md)
+// Copyright Airbus Group
 serial.log :
 
 0x4453:28:0x2010a3:32:vmwrite(0x4824) = 0x482400000000
