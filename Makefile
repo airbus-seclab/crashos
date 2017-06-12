@@ -106,7 +106,7 @@ $(tbuild): $(tdep)
 
 ### Create kernel
 else
-TESTS :=       tests_Prvlg_Instr/test_06
+TESTS :=       stable_tests/tests_Prvlg_Instr/test_06
 
 CORE :=	core/entry.o				\
 		core/start.o				\
