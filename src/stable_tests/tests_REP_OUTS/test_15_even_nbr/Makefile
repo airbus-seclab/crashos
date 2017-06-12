@@ -1,0 +1,1 @@
+obj := test_15_even_nbr.o

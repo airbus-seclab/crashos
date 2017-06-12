@@ -1,0 +1,26 @@
+With Vmware : 
+- trace.log
+	ds_limit : 0x10010
+	GP_handler : General Protection fault at 0x201a61 (error code : 0x0)
+- serial.log (COM1) : empty
+
+With Ramooflax : 
+- trace.log :
+	ds_limit : 0x10010
+	Warning : Page fault handled (Page allocated : p=0)
+	rep outsb done
+	reading at 0x410ff1
+	Warning : Page fault handled (Page allocated : p=0)
+- serial.log : 
+0x2fa4:30:0x201a61:32:#PF on vm access 0x410ff1 sz 0x20
+0x2fa4:30:0x201a61:32:inject exception #14 err 0x0
+0x2fa4:30:0x201a61:32:io fwd outs: vm_read_mem() fail
+0x2fa4:30:0x201a61:32:missing 32 bytes, available 64, done 0 !
+0x2fa5:30:0x201a61:32:vm_access_local read dst 0x1feeee45 src 0x20fff1 ln 15 [0x43:0x43]
+434343434343434343434343434343
+0x2fa5:30:0x201a61:32:#PF on vm access 0x411000 sz 0x11
+0x2fa5:30:0x201a61:32:inject exception #14 err 0x0
+0x2fa5:30:0x201a61:32:io fwd outs: vm_read_mem() fail
+0x2fa5:30:0x201a61:32:missing 17 bytes, available 49, done 15 !
+0x2fa6:30:0x201a61:32:vm_access_local read dst 0x1feeee45 src 0x210000 ln 17 [0x44:0x44]
+4444444444444444444444444444444444

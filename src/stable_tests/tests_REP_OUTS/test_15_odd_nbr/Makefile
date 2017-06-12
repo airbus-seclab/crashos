@@ -1,0 +1,1 @@
+obj := test_15_odd_nbr.o

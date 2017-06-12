@@ -1,0 +1,1 @@
+obj := test_07c.o

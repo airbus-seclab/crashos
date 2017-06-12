@@ -1,0 +1,29 @@
+Test Name : test_2
+
+Aim : Test behaviour of hypervisor when "REP OUTS COM3" instruction is using a DS_r3 mapped on non consecutive physical pages 
+and a pb in virtual pages access rights.
+Configuration : 
+- GDT :
+	- null segment
+	- CS ring 0
+	- DS ring 0
+	- CS ring 3
+	- DS ring 3
+	- TSS
+	- DS_test (rights : DPL=0, S=1, 0EWA=0000; @base=0x400ff0=end_of_page_b; limit=PAGE_SIZE)
+	
+- PGD :
+	- 4MB for identity mapping
+	- PTB (RW=1, US=1)
+	
+- PTB :
+	- page_b (RW=1, US=1)
+	- page_a (RW=1, US=0) /!\ bad rights
+
+- physical pages :
+	- page_a (@ = mem_start)
+	- page_b (@ = mem_start + 2*PAGE_SIZE)
+
+Result :
+- with Vmware : OK : #PF occured 
+- with Ramooflax : NOK : no check of page rights

@@ -1,0 +1,11 @@
+Test name : test_15_odd_nbr
+
+Content : REP OUTS fuzzer - list of fails - value 'A'
+- privilege level : ring 0
+- instruction     : REP OUTS
+- port range      : [0x0000 - 0xffff]
+- buffer addr     : 0x300000 (no paging)
+- buffer size     : 1
+- buffer content  : 'A' (one even number)
+
+Results : cf. .c file

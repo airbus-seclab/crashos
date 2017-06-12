@@ -1,0 +1,19 @@
+- with Vmware : OK (#PF occurs)
+	- trace.log : 
+(#PF) eip 0x201a31 p=1 w_r=0 u_s=1  OK - ring 3 : rep outsb done with a #PF
+
+-------------------------------------------------------------------------------------------------
+- with Ramooflax : NOK : no check of page rights !!
+	- trace.log : 
+NOK - ring 3 : rep outsb done without #PF
+
+	- serial.log :
+		0x2f96:30:0x2017d0:32:vm_access_local read dst 0x1feeee45 src 0x20dff0 ln 16 [0x42:0x42]
+		42424242424242424242424242424242
+		0x2f96:30:0x2017d0:32:vm_access_local read dst 0x1feeee55 src 0x20c000 ln 16 [0x41:0x41]
+		41414141414141414141414141414141
+		0x2f97:30:0x201b65:32:vm_access_local read dst 0x1feeee65 src 0x20dff0 ln 16 [0x42:0x42]
+		42424242424242424242424242424242
+		0x2f97:30:0x201b65:32:vm_access_local read dst 0x1feeee75 src 0x20c000 ln 16 [0x41:0x41]
+		41414141414141414141414141414141
+		0x2f97:30:0x201b65:32:tx BBBBBBBBBBBBBBBBAAAAAAAAAAAAAAAABBBBBBBBBBBBBBBBAAAAAAAAAAAAAAAA

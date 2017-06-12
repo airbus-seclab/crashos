@@ -1,0 +1,7 @@
+Test name : test_04
+Aim : test a reading (REP OUTS) of an expand-down data segment with a base address and a limit critically configured 
+("effective limit" > 0xffff = upper-bound)
+
+result : 
+- with Vmware : #GP caused by reading out of limit buffer
+- with Ramooflax : no #GP : no check of segment limit. reading without pb.

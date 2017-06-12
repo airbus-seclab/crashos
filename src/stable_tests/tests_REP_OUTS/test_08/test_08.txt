@@ -1,0 +1,7 @@
+test name : test_08
+
+Aim : Test the behavior of VMM with a "REP OUTS COM1" instruction performed in ring 3 which uses data of a kernel page.
+
+Result : 
+- with Vmware : #PF (OK)
+- with Ramooflax : no check... 

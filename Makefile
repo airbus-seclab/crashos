@@ -106,7 +106,22 @@ $(tbuild): $(tdep)
 
 ### Create kernel
 else
-TESTS :=       stable_tests/tests_Prvlg_Instr/test_06
+TESTS := stable_tests/tests_Prvlg_Instr/test_06       \
+         stable_tests/tests_REP_OUTS/test_01          \
+         stable_tests/tests_REP_OUTS/test_02          \
+         stable_tests/tests_REP_OUTS/test_03          \
+         stable_tests/tests_REP_OUTS/test_03b         \
+         stable_tests/tests_REP_OUTS/test_04          \
+         stable_tests/tests_REP_OUTS/test_05          \
+         stable_tests/tests_REP_OUTS/test_07          \
+         stable_tests/tests_REP_OUTS/test_07b         \
+         stable_tests/tests_REP_OUTS/test_07c         \
+         stable_tests/tests_REP_OUTS/test_08          \
+         stable_tests/tests_REP_OUTS/test_15_odd_nbr  \
+         stable_tests/tests_REP_OUTS/test_15_even_nbr \
+ 
+
+ 
 
 CORE :=	core/entry.o				\
 		core/start.o				\
@@ -121,7 +136,7 @@ CORE :=	core/entry.o				\
 		core/interrupt_handler.o	\
 		core/interrupt_wrapper.o	\
 		core/page.o                 \
-                core/keyboard.o
+        core/keyboard.o
 
 
 ## append path

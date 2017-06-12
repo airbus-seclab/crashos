@@ -1,0 +1,8 @@
+Test name : test_05
+Aim : test a writing more than 0x82 (=130) bytes into serial port COM1
+
+Result : with Vmware : no problem
+with Ramooflax : crash (cf log) : buffer overflow in the io memory -> overrides the rest of the memory (for example the vmcs cache structure)
+ + if overriden with a correct value of the "VMCS", Vmware crash
+
+Pb in Ramooflax : no test if sz->miss <= size_of_buffer_uart (=64)

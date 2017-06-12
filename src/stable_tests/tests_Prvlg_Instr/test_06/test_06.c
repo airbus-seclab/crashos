@@ -48,7 +48,7 @@ uint16_t 										gp_return = 0xc3c9; // leave and ret
  * Just return into the calling function (=test_06()) and update the flag
  * @param ctx interrupt context
  */
-void __attribute__((regparm(1))) local_gp_handler(context_t* ctx) {
+static void __attribute__((regparm(1))) local_gp_handler(context_t* ctx) {
 	ctx->eip = (uint32_t) &gp_return;
 	flag = 1;
 }

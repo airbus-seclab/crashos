@@ -1,0 +1,27 @@
+Test Name : test_1
+
+Aim : Test behaviour of hypervisor when "REP OUTS COM3" instruction is using a DS mapped on non consecutive physical pages.
+Configuration : 
+- GDT :
+	- null segment
+	- CS ring 0
+	- DS ring 0
+	- CS ring 3
+	- DS ring 3
+	- TSS
+	- DS_test (rights : DPL=0, S=1, 0EWA=0000; @base=0x400ff0=end_of_page_b; limit=PAGE_SIZE)
+	
+- PGD :
+	- 4MB for identity mapping
+	- PTB (RW=1, US=1)
+	
+- PTB :
+	- page_b (RW=1, US=1)
+	- page_a (RW=1, US=1)
+
+- physical pages :
+	- page_a (@ = mem_start)
+	- pag_b (@ = mem_start + 2*PAGE_SIZE)
+
+Result : No problem detected. Reading good performed.
+

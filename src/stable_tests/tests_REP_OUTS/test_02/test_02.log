@@ -1,0 +1,25 @@
+with VMware : 
+- trace.log :
+exception 14 | cr2 0x401000 from 0x201927
+Page-level protection violation (p=1)
+Read access not allowed (w_r=0)
+Execution in user mode (u_s=1)
+----------------------------------------------------------------------------------------
+with Ramooflax :
+- serial.log
+0x3027:30:0x201927:32:uart out begin
+0x3027:30:0x201927:32:cr3 0x205000
+0x3027:30:0x201927:32:pde32 @ 0x205004 = 0x207007
+0x3027:30:0x201927:32:pte32 @ 0x207000 = 0x20d007
+0x3027:30:0x201927:32:pmode vaddr 0x400ff0 -> guest paddr 0x20dff0
+0x3027:30:0x201927:32:vm_access_local read dst 0x1feef0a5 src 0x20dff0 ln 16 [0x42:0x42]
+42424242424242424242424242424242
+0x3027:30:0x201927:32:cr3 0x205000
+0x3027:30:0x201927:32:pde32 @ 0x205004 = 0x207007
+0x3027:30:0x201927:32:pte32 @ 0x207004 = 0x20c003
+0x3027:30:0x201927:32:pmode vaddr 0x401000 -> guest paddr 0x20c000
+0x3027:30:0x201927:32:vm_access_local read dst 0x1feef0b5 src 0x20c000 ln 16 [0x41:0x41]
+41414141414141414141414141414141
+0x3027:30:0x201927:32:uart out end
+- trace.log
+ring 3 : rep outsb done
