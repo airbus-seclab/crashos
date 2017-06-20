@@ -14,6 +14,8 @@ The core of CrashOS provides the following OS features:
 
 A default kernel configuration is available but this set of features allows to entirely reconfigure the kernel as you desire.
 
+Note : CrashOS is a work in progress. Please report any issue [here](https://github.com/airbus-seclab/crashos/issues).
+
 # Hardware and software requirements
 CrashOS only works on Intel x86 hardware architecture, requires gcc-4.8 to be compiled and GRUB to boot.
 
