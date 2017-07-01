@@ -168,10 +168,6 @@ static int init_test_06() {
 	init_work_mem();
 	init_segmentation(gdt, &tss, r3esp, &gdtr);
 	init_paging(&pGd, &pTb, __cr4);
-	init_serial_uart(PORT_COM1);
-	init_serial_uart(PORT_COM2);
-	init_serial_uart(PORT_COM3);
-	init_serial_uart(PORT_COM4);
 
 	//init test list
 	test_array[0]  = test_lgdt;
