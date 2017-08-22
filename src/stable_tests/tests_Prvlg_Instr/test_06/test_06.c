@@ -20,7 +20,7 @@
 
 extern isr_t interrupt_handlers[256];
 
-static interrupt_descriptor_t                   idt[1];
+static interrupt_descriptor_t                   idt[256];
 static idt_reg_t __idtr, idtr;
 
 static pgd_struct 								pGd;
