@@ -20,7 +20,7 @@
 
 extern isr_t interrupt_handlers[256];
 
-static interrupt_descriptor_t                   idt[1];
+static interrupt_descriptor_t                   idt[256];
 static idt_reg_t __idtr, idtr;
 
 static pgd_struct 								pGd;
@@ -217,7 +217,7 @@ static int restore_test_06() {
    set_idtr( __idtr );
    if( __tr ) set_tr( __tr );
    set_ds( __ds );
-   set_ds( __ss );
+   set_ss( __ss );
    set_cs_m( __cs );
    return 0;
 }
