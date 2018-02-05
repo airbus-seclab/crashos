@@ -73,3 +73,9 @@ Then, compile the project.
 
 # License
 CrashOS is released under [GPLv2](https://github.com/airbus-seclab/crashos/blob/master/LICENSE.md).
+
+# References
+- [ISSRE2017 Slides](https://github.com/airbus-seclab/airbus-seclab.github.io/blob/master/crashos/ISSRE2017-CrashOS-Gantet.pdf)
+- [SSTIC Article (French)](https://github.com/airbus-seclab/airbus-seclab.github.io/blob/master/crashos/SSTIC2017-Article-crashos-gantet.pdf)
+- [SSTIC Slides (French)](https://github.com/airbus-seclab/airbus-seclab.github.io/blob/master/crashos/SSTIC2017-Slides-crashos-gantet.pdf)
+
