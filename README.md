@@ -17,7 +17,7 @@ A default kernel configuration is available but this set of features allows to e
 Note : CrashOS is a work in progress. Please report any issue [here](https://github.com/airbus-seclab/crashos/issues).
 
 # Hardware and software requirements
-CrashOS only works on Intel x86 hardware architecture, requires gcc-4.8 to be compiled and GRUB to boot.
+CrashOS only works on Intel x86 hardware architecture, requires gcc-multilib (to be compiled on x86-64) and GRUB to boot.
 
 # Installation
 To install CrashOS, first compile the project with the main Makefile. It will create the 32-bits executable [test.bin](https://github.com/airbus-seclab/crashos/blob/master/build/test.bin).

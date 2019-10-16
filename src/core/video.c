@@ -46,6 +46,8 @@ void video_write(char *buffer)
       {
          case '\n':
 	        video.ln++;
+	        video.cl = 0;
+                break;
          case '\r':
 	        video.cl = 0;
 	        break;
