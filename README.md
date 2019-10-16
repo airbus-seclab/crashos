@@ -17,18 +17,16 @@ A default kernel configuration is available but this set of features allows to e
 Note : CrashOS is a work in progress. Please report any issue [here](https://github.com/airbus-seclab/crashos/issues).
 
 # Hardware and software requirements
-CrashOS only works on Intel x86 hardware architecture, requires gcc-multilib (to be compiled on x86-64) and GRUB to boot.
+CrashOS only works on Intel x86 hardware architecture, requires `gcc-multilib` (to be compiled under x86-64) and GRUB to boot. The kernel is multiboot compliant.
 
-# Installation
-To install CrashOS, first compile the project with the main Makefile. It will create the 32-bits executable [test.bin](https://github.com/airbus-seclab/crashos/blob/master/build/test.bin).
+# Installation (ie. VMWare)
+To install CrashOS, first compile the project with the main Makefile. It will create the 32-bits executable `test.bin`.
 `.../crashos$ make`
 
-Then install test.bin and Grub in a bootable storage, and use this bootable storage to launch the VM in your hypervisor.
-A example of installation with Vmware is included in the Makefile by executing the following command line:
+Then install `test.bin` on the provided VMWare disk image to test it under VMWare hypervisor. You need `vmware-mount`command line tool and the ability to mount `ext2` filesystems.
 
-`.../crashos$ make install`
+`.../crashos$ sudo make install`
 
-Don't forget to adapt the VM path in the script [tools/installer_vmware.sh](https://github.com/airbus-seclab/crashos/blob/master/tools/installer_vmware.sh): `VMPATH="/home/xxx/Vmware/${VMNAME}"`
 
 # Usage
 
@@ -68,8 +66,8 @@ Specify, in the main [Makefile](https://github.com/airbus-seclab/crashos/blob/ma
     TESTS :=  test_repo1 test_repo2 
     ...
 
-Then, compile the project.
-    `.../crashos$ make install`
+Then, rebuild the project.
+    `.../crashos$ make`
 
 # License
 CrashOS is released under [GPLv2](https://github.com/airbus-seclab/crashos/blob/master/LICENSE.md).
